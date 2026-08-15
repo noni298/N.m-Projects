@@ -25,7 +25,6 @@ function App() {
         </div>
         <section className="text-center mb-5 p-4 border rounded bg-light shadow-sm">
           <h3 className="text-primary mb-2">تمرين رقم 22</h3>
-          <h4 className="mb-3">التحكم بحجم الصورة باستخدام useRef</h4>
           <div className="my-3">
             <img ref={imgRef} src="images/sp.jpg" alt="صورة فضاء" style={{ width: "200px" }} />
           </div>
