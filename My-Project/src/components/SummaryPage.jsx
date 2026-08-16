@@ -1,7 +1,7 @@
 import React from 'react';
 import { FaChartLine, FaCheckCircle, FaHeartbeat, FaTrophy, FaSmile } from 'react-icons/fa';
 
-export default function SummaryPage({ tasks = [], meds = [], sports = [] }) {
+function SummaryPage({ tasks = [], meds = [], sports = [] }) {
   const totalMeds = meds.length;
   const completedMeds = meds.filter(m => m.completed).length;
   const medsPercentage = totalMeds > 0 ? Math.round((completedMeds / totalMeds) * 100) : 0;
@@ -11,7 +11,6 @@ export default function SummaryPage({ tasks = [], meds = [], sports = [] }) {
 
   const totalSportsSessions = sports.reduce((acc, curr) => acc + Number(curr.sessionsCount || 0), 0);
 
-  // حساب متوسط السكر إذا وجد
   const sugarValues = sports.map(s => Number(s.sugarLevel)).filter(v => v > 0);
   const avgSugar = sugarValues.length > 0 ? Math.round(sugarValues.reduce((a, b) => a + b, 0) / sugarValues.length) : 0;
 
@@ -38,13 +37,12 @@ export default function SummaryPage({ tasks = [], meds = [], sports = [] }) {
         <p className="text-muted fs-5 m-0">نظرة شاملة على إنجازاتك الصحية واليومية</p>
       </div>
 
-      {/* بطاقة التهنئة والعبارة التشجيعية التفاعلية */}
       <div className={`p-4 mb-4 rounded-4 text-white shadow ${badgeColor} d-flex align-items-center`}>
         <div className="fs-1 ms-3">
           <FaTrophy />
         </div>
         <div>
-          <h4 className="fw-bold mb-1">رسالة  اليوم :</h4>
+          <h4 className="fw-bold mb-1">رسالة اليوم :</h4>
           <p className="fs-5 mb-0">{encouragementMessage}</p>
         </div>
       </div>
@@ -91,3 +89,5 @@ export default function SummaryPage({ tasks = [], meds = [], sports = [] }) {
     </div>
   );
 }
+
+export default SummaryPage;

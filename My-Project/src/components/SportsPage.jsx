@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import { FaDumbbell, FaRunning, FaSwimmer, FaBiking, FaPlus, FaTrash } from 'react-icons/fa';
 
-export default function SportsPage() {
+function SportsPage({ sports = [], setSports }) {
   const daysMap = ['الأحد', 'الإثنين', 'الثلاثاء', 'الأربعاء', 'الخميس', 'الجمعة', 'السبت'];
   const currentRealDay = daysMap[new Date().getDay()];
 
-  const [sportsRecords, setSportsRecords] = useState([]);
   const [sportType, setSportType] = useState('مشي / جري');
   const [sessionsCount, setSessionsCount] = useState('');
   const [sugarLevel, setSugarLevel] = useState('');
@@ -24,8 +23,8 @@ export default function SportsPage() {
     e.preventDefault();
     if (!sessionsCount || !sugarLevel) return;
 
-    setSportsRecords([
-      ...sportsRecords,
+    setSports([
+      ...sports,
       {
         id: Date.now(),
         sportType,
@@ -40,10 +39,10 @@ export default function SportsPage() {
   };
 
   const deleteRecord = (id) => {
-    setSportsRecords(sportsRecords.filter((r) => r.id !== id));
+    setSports(sports.filter((r) => r.id !== id));
   };
 
-  const filteredRecords = sportsRecords.filter((r) => r.day === selectedDay);
+  const filteredRecords = sports.filter((r) => r.day === selectedDay);
 
   return (
     <div className="card shadow-lg flex-grow-1 p-4 border-0 rounded-4 bg-white">
@@ -56,7 +55,6 @@ export default function SportsPage() {
         </p>
       </div>
 
-      {/* أزرار اختيار اليوم */}
       <div className="d-flex justify-content-center flex-wrap gap-2 mb-4">
         {daysOfWeek.map((d, idx) => (
           <button
@@ -70,7 +68,6 @@ export default function SportsPage() {
         ))}
       </div>
 
-      {/* نموذج الإدخال */}
       <form onSubmit={handleSubmit} className="row g-3 mb-4 p-3 bg-light rounded-3 shadow-sm border">
         <div className="col-md-4">
           <label className="form-label fw-bold">اختر نوع الرياضة:</label>
@@ -112,7 +109,6 @@ export default function SportsPage() {
         </div>
       </form>
 
-      {/* عرض السجلات ليوم محدد */}
       <div className="flex-grow-1 bg-white p-4 rounded-3 border shadow-sm">
         <h4 className="mb-3 border-bottom pb-2" style={{ color: '#670b43' }}>
           سجل الرياضة ليوم: {selectedDay}
@@ -151,3 +147,5 @@ export default function SportsPage() {
     </div>
   );
 }
+
+export default SportsPage;

@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import { FaCheck, FaTimes, FaTrash, FaPlus, FaTasks } from 'react-icons/fa';
 
-export default function TasksPage() {
+function TasksPage({ tasks = [], setTasks }) {
   const daysMap = ['الأحد', 'الإثنين', 'الثلاثاء', 'الأربعاء', 'الخميس', 'الجمعة', 'السبت'];
   const currentRealDay = daysMap[new Date().getDay()];
 
-  const [tasks, setTasks] = useState([]);
   const [text, setText] = useState('');
   const [selectedDay, setSelectedDay] = useState(currentRealDay);
 
@@ -98,3 +97,5 @@ export default function TasksPage() {
     </div>
   );
 }
+
+export default TasksPage;

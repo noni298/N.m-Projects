@@ -1,4 +1,3 @@
-
 const AlertMessage = ({ message, type }) => {
   if (!message) return null;
   return (

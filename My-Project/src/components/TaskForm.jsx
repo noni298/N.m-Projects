@@ -49,5 +49,4 @@ const TaskForm = ({ addTask }) => {
     </div>
   );
 };
-
 export default TaskForm;

@@ -1,14 +1,9 @@
 import React, { useState } from 'react';
 import { FaCheck, FaTimes, FaTrash, FaPlus, FaPills, FaSyringe } from 'react-icons/fa';
 
-export default function MedsPage() {
+export default function MedsPage({ meds = [], setMeds }) {
   const daysMap = ['الأحد', 'الإثنين', 'الثلاثاء', 'الأربعاء', 'الخميس', 'الجمعة', 'السبت'];
   const currentRealDay = daysMap[new Date().getDay()];
-
-  const [meds, setMeds] = useState([
-    { id: 1, name: 'فيتامين د', type: 'فيتامين', time: 'الصباح', day: currentRealDay, completed: false },
-    { id: 2, name: 'إبرة السكر', type: 'إبرة سكر', time: 'قبل الوجبة', day: currentRealDay, completed: false },
-  ]);
 
   const [name, setName] = useState('');
   const [type, setType] = useState('فيتامين');
