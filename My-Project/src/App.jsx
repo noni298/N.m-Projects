@@ -1,10 +1,11 @@
-import React,{ useState } from 'react';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Header from './components/Header';
+import Footer from './components/Footer';
 import TasksPage from './components/TasksPage';
 import MedsPage from './components/MedsPage';
 import SportsPage from './components/SportsPage';
 import SummaryPage from './components/SummaryPage';
-import { FaTasks, FaPills, FaDumbbell, FaChartPie } from 'react-icons/fa';
 import './App.css';
 
 function App() {
@@ -22,23 +23,7 @@ function App() {
     <Router>
       <div className="container-fluid min-vh-100 d-flex flex-column p-4 bg-light" style={{ direction: 'rtl' }}>
         
-        <nav className="navbar navbar-expand-lg navbar-dark rounded-4 shadow-sm mb-4 px-4" style={{ backgroundColor: '#670b43' }}>
-          <span className="navbar-brand fw-bold fs-4">نظامي الشامل</span>
-          <div className="navbar-nav ms-auto d-flex flex-row gap-3 flex-wrap">
-            <Link className="nav-link text-white d-flex align-items-center gap-1 fs-5" to="/">
-              <FaChartPie /> الملخص والتشجيع
-            </Link>
-            <Link className="nav-link text-white d-flex align-items-center gap-1 fs-5" to="/tasks">
-              <FaTasks /> المهام
-            </Link>
-            <Link className="nav-link text-white d-flex align-items-center gap-1 fs-5" to="/meds">
-              <FaPills /> العلاجات
-            </Link>
-            <Link className="nav-link text-white d-flex align-items-center gap-1 fs-5" to="/sports">
-              <FaDumbbell /> الرياضة والسكر
-            </Link>
-          </div>
-        </nav>
+        <Header />
 
         <div className="flex-grow-1 d-flex flex-column">
           <Routes>
@@ -48,6 +33,8 @@ function App() {
             <Route path="/sports" element={<SportsPage sports={sports} setSports={setSports} />} />
           </Routes>
         </div>
+
+        <Footer />
 
       </div>
     </Router>
